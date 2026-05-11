@@ -181,4 +181,3 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">Made with ❤️ for learning and healthcare innovation</p>
