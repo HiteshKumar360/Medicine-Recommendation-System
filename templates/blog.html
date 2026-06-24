@@ -3,45 +3,303 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog Post</title>
+    <title>Blog — Health Care Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      body { background-color: #f8f9fa; }
+
+      .blog-hero {
+        padding: 3rem 0 2rem;
+        border-bottom: 1px solid #e9ecef;
+        margin-bottom: 2.5rem;
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: #e7f1ff;
+        color: #1a56db;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+
+      .blog-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.5rem;
+        height: 100%;
+        transition: box-shadow 0.2s ease;
+      }
+
+      .blog-card:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      }
+
+      .blog-tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 3px 10px;
+        border-radius: 20px;
+        margin-bottom: 0.75rem;
+      }
+
+      .tag-ml { background-color: #e7f1ff; color: #1a56db; }
+      .tag-health { background-color: #e6f9f0; color: #0a7c43; }
+      .tag-tech { background-color: #f3e8ff; color: #6d28d9; }
+
+      .blog-card h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #212529;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+      }
+
+      .blog-card p {
+        font-size: 0.875rem;
+        color: #6c757d;
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .blog-meta {
+        font-size: 0.75rem;
+        color: #adb5bd;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .featured-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .featured-card .tag { margin-bottom: 1rem; }
+
+      .featured-card h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 0.75rem;
+        line-height: 1.35;
+      }
+
+      .featured-card p {
+        font-size: 0.95rem;
+        color: #495057;
+        line-height: 1.8;
+        margin-bottom: 1.25rem;
+      }
+
+      .featured-card .blog-meta {
+        font-size: 0.8rem;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #adb5bd;
+        margin-bottom: 1rem;
+      }
+
+      .read-more {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #1a56db;
+        text-decoration: none;
+      }
+
+      .read-more:hover { text-decoration: underline; }
+
+      .step-box {
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        display: flex;
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      .step-num {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1a56db;
+        min-width: 24px;
+      }
+
+      .step-box h6 {
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 3px;
+        color: #212529;
+      }
+
+      .step-box p {
+        font-size: 0.8rem;
+        color: #6c757d;
+        margin: 0;
+        line-height: 1.5;
+      }
+    </style>
   </head>
   <body>
-    <div class="container my-4 mt-4">
 
-        <h2 class="text-center"> Building a Symptom-Based Disease Diagnosis Web App with Flask and Machine Learning</h2>
-        <p>In the age of technology and information, access to accurate and timely healthcare is more critical than ever. With the increasing importance of remote healthcare solutions, we embarked on a journey to develop a symptom-based disease diagnosis web application. Leveraging Flask for the backend and a Decision Tree Classifier model, we created a user-friendly platform that can help users identify potential illnesses based on their reported symptoms.</p>
+    <div class="container my-4" style="max-width: 860px;">
 
-        <h3>The Problem</h3>
-        <p>The project began with recognizing a common issue: people often experience symptoms and want quick answers about their health concerns. It can be challenging to differentiate between various diseases, especially when symptoms overlap. Our goal was to provide a convenient solution for users to input their symptoms and receive potential diagnoses.</p>
+      <!-- Hero -->
+      <div class="blog-hero">
+        <div class="badge-pill">📝 Health Care Center — Blog</div>
+        <h1 class="fw-semibold mb-2" style="font-size: 2rem;">Blog</h1>
+        <p class="text-secondary mb-0">Insights on ML, healthcare technology, and how this project was built.</p>
+      </div>
 
-        <h3>The Solution</h3>
-        <p>We developed a web app that allows users to enter a list of symptoms they are experiencing. The app then uses a pre-trained Decision Tree Classifier model to predict the most likely disease based on the provided symptoms. Here's how it works:</p>
+      <!-- Featured post -->
+      <div class="section-label">Featured post</div>
+      <div class="featured-card">
+        <span class="blog-tag tag-ml">Machine Learning</span>
+        <h2>Building a symptom-based disease diagnosis web app with Flask and machine learning</h2>
+        <p>
+          People often experience symptoms and want quick answers. Differentiating between diseases
+          is hard when symptoms overlap. This project tackles that problem head-on — using a trained
+          SVM classifier and a simple web interface to give users instant, personalised health
+          information based on what they're feeling.
+        </p>
 
-        <ol>
-            <li><b><strong>Symptom Input:</strong></b> Users enter their symptoms through a user-friendly interface. The web app supports a wide range of symptoms, making it versatile for different scenarios.</li>
-            <li><b><strong>Machine Learning Model:</strong></b> We trained a Decision Tree Classifier using a dataset containing symptoms and corresponding diseases. The model is capable of predicting diseases based on input symptoms.</li>
-            <li><b><strong>Prediction:</strong></b> The app uses the model to predict the most likely disease, providing users with instant information about potential health concerns.</li>
-            <li><b><strong>Additional Information: </strong></b> To enhance user experience, the app also provides additional information about the predicted disease. This includes a description of the disease, recommended precautions, medications, dietary advice, and workout tips.</li>
+        <!-- How it works steps -->
+        <div class="d-flex flex-column gap-2 mb-3">
+          <div class="step-box">
+            <span class="step-num">1</span>
+            <div>
+              <h6>Symptom input</h6>
+              <p>Users type comma-separated symptoms into the interface. The app supports 132 distinct symptoms.</p>
+            </div>
+          </div>
+          <div class="step-box">
+            <span class="step-num">2</span>
+            <div>
+              <h6>SVM prediction</h6>
+              <p>Symptoms are encoded into a binary vector and passed to a trained Support Vector Classifier, which predicts from 41 diseases.</p>
+            </div>
+          </div>
+          <div class="step-box">
+            <span class="step-num">3</span>
+            <div>
+              <h6>Full health plan</h6>
+              <p>The predicted disease is looked up across CSV datasets to return medications, diet advice, precautions, and workouts.</p>
+            </div>
+          </div>
+        </div>
 
-        </ol>
+        <div class="blog-meta">
+          <span>👨‍💻 Hitesh Kumar</span>
+          <span>·</span>
+          <span>5 min read</span>
+          <span>·</span>
+          <span>Machine Learning · Flask · Python</span>
+        </div>
+      </div>
 
-        <h3>Key Features</h3>
-        <ul type="circle">
-            <li><b><strong>User-Friendly Interface:</strong></b> The web app boasts an intuitive and easy-to-navigate interface, ensuring that users can input their symptoms without any hassle.</li>
-            <li><b><strong>Accurate Predictions:</strong></b> Leveraging machine learning, our model provides accurate disease predictions based on the symptoms provided by the user.</li>
-            <li><b><strong>Comprehensive Information: </strong></b>In addition to predictions, the app offers comprehensive information about the predicted disease, including descriptions, precautions, medications, diet recommendations, and workout tips.</li>
-            <li><b><strong>ducational Content:</strong></b> To empower users with knowledge, the app includes informative blog posts about various health topics.</li>
-        </ul>
+      <!-- More posts -->
+      <div class="section-label">More posts</div>
+      <div class="row g-3">
 
-        <br>
+        <div class="col-md-4">
+          <div class="blog-card">
+            <span class="blog-tag tag-ml">ML</span>
+            <h5>Why SVM outperforms Decision Trees for disease classification</h5>
+            <p>A deep dive into why Support Vector Machines generalise better on symptom datasets compared to simpler tree-based models.</p>
+            <div class="blog-meta">
+              <span>👨‍💻 Hitesh Kumar</span>
+              <span>·</span>
+              <span>4 min read</span>
+            </div>
+          </div>
+        </div>
 
-        <h3>Conclusion</h3>
-        <p>Our Symptom-Based Disease Diagnosis Web App brings the power of machine learning and healthcare information to the fingertips of users. It serves as a valuable resource for individuals looking to gain insights into their health conditions quickly and conveniently. By combining technology and healthcare, we aim to make healthcare more accessible and user-centric.
+        <div class="col-md-4">
+          <div class="blog-card">
+            <span class="blog-tag tag-health">Health</span>
+            <h5>Understanding your symptoms: When to seek help</h5>
+            <p>How to interpret common symptom combinations, which ones to take seriously, and when an AI tool is not enough.</p>
+            <div class="blog-meta">
+              <span>👨‍💻 Hitesh Kumar</span>
+              <span>·</span>
+              <span>3 min read</span>
+            </div>
+          </div>
+        </div>
 
-In an era where remote healthcare solutions are gaining prominence, this project represents a significant step forward in providing accessible and reliable healthcare information to the masses. We hope that this project will contribute to better health awareness and ultimately improve the well-being of individuals worldwide.</p>
+        <div class="col-md-4">
+          <div class="blog-card">
+            <span class="blog-tag tag-tech">Tech</span>
+            <h5>How Flask powers the backend of this health app</h5>
+            <p>A walkthrough of the Flask route structure, Jinja2 templating, and how prediction results flow from model to UI.</p>
+            <div class="blog-meta">
+              <span>👨‍💻 Hitesh Kumar</span>
+              <span>·</span>
+              <span>4 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="blog-card">
+            <span class="blog-tag tag-ml">ML</span>
+            <h5>Binary encoding of symptoms: How the model reads your input</h5>
+            <p>Explaining how raw text symptoms are transformed into a 132-dimensional binary vector that the SVC model can process.</p>
+            <div class="blog-meta">
+              <span>👨‍💻 Hitesh Kumar</span>
+              <span>·</span>
+              <span>3 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="blog-card">
+            <span class="blog-tag tag-health">Health</span>
+            <h5>Diet and disease: Why nutrition matters in recovery</h5>
+            <p>Why this app recommends specific diets alongside medications — and the science behind food as part of treatment.</p>
+            <div class="blog-meta">
+              <span>👨‍💻 Hitesh Kumar</span>
+              <span>·</span>
+              <span>3 min read</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="blog-card">
+            <span class="blog-tag tag-tech">Tech</span>
+            <h5>Deploying a Flask ML app: Lessons from this project</h5>
+            <p>Practical notes on packaging a pickle model, structuring datasets, handling edge cases, and preparing for deployment.</p>
+            <div class="blog-meta">
+              <span>👨‍💻 Hitesh Kumar</span>
+              <span>·</span>
+              <span>5 min read</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
