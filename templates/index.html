@@ -5,262 +5,500 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Health Care Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      body { background-color: #f8f9fa; }
+
+      /* Navbar */
+      .navbar-brand { font-weight: 600; letter-spacing: 0.02em; }
+
+      .nav-logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.3);
+        object-fit: cover;
+        margin-right: 8px;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 3rem 0 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid #e9ecef;
+        margin-bottom: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
+        color: #6c757d;
+        margin: 0;
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: #e7f1ff;
+        color: #1a56db;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+
+      /* Input card */
+      .input-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 14px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .input-card label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .input-card .form-control {
+        font-size: 0.875rem;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        padding: 0.65rem 0.9rem;
+      }
+
+      .input-card .form-control:focus {
+        border-color: #1a56db;
+        box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+      }
+
+      .btn-predict {
+        background-color: #e53e3e;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        width: 100%;
+        margin-top: 1rem;
+      }
+
+      .btn-predict:hover { background-color: #c53030; color: #fff; }
+
+      .btn-speech {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #495057;
+        cursor: pointer;
+        margin-top: 0.75rem;
+      }
+
+      .btn-speech:hover { background: #e7f1ff; color: #1a56db; border-color: #1a56db; }
+      .btn-speech.listening { background: #fff0f0; color: #e53e3e; border-color: #e53e3e; }
+
+      .transcription-box {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: #6c757d;
+        min-height: 18px;
+      }
+
+      .alert-warning-custom {
+        background-color: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 0 8px 8px 0;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        color: #856404;
+        margin-top: 1rem;
+        display: flex;
+        gap: 8px;
+      }
+
+      .alert-error-custom {
+        background-color: #fff0f0;
+        border-left: 4px solid #e53e3e;
+        border-radius: 0 8px 8px 0;
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+        color: #c53030;
+        margin-top: 1rem;
+        display: flex;
+        gap: 8px;
+      }
+
+      /* Results */
+      .results-section { margin-bottom: 2rem; }
+
+      .results-section h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #212529;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .result-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+      }
+
+      .result-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 1rem 0.5rem;
+        border-radius: 10px;
+        border: none;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.15s, transform 0.1s;
+      }
+
+      .result-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+      .result-btn .btn-icon { font-size: 1.4rem; }
+
+      .btn-disease  { background-color: #fff3e0; color: #e65100; }
+      .btn-desc     { background-color: #e3f2fd; color: #1565c0; }
+      .btn-precaution { background-color: #fce4ec; color: #880e4f; }
+      .btn-medications { background-color: #ffebee; color: #b71c1c; }
+      .btn-workouts { background-color: #f1f8e9; color: #33691e; }
+      .btn-diets    { background-color: #fffde7; color: #f57f17; }
+
+      /* Modals */
+      .modal-header {
+        background-color: #212529;
+        color: #ffffff;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .modal-content { border-radius: 12px; border: none; }
+
+      .modal-body ul {
+        padding-left: 1.25rem;
+        margin: 0;
+      }
+
+      .modal-body ul li {
+        font-size: 0.875rem;
+        color: #495057;
+        padding: 4px 0;
+        line-height: 1.6;
+      }
+
+      .modal-body p {
+        font-size: 0.875rem;
+        color: #495057;
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      .disease-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #212529;
+      }
+
+      /* Disclaimer */
+      .disclaimer {
+        background-color: #fff8e1;
+        border-left: 4px solid #ffc107;
+        border-radius: 0 8px 8px 0;
+        padding: 0.85rem 1rem;
+        font-size: 0.8rem;
+        color: #856404;
+        margin-top: 2rem;
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+      }
+    </style>
   </head>
 
-  <style>
+  <body>
 
-        .logo {
-            width: 50px;
-            height: 50px;
-            color: black;
-            margin-top: 0;
-            margin-left: 2px;
-        }
-
-        .myimg {
-            width: 50px;
-            height: 50px;
-            border: 2px solid black;
-            border-radius: 25px;
-        }
-
-
-
-
-    </style>
-</head>
-<body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <!-- Logo at the top-left corner -->
-            <div class="logo">
-                <img class="myimg" src="{{ url_for('static', filename='img.png') }}" alt="">
-            </div>
-
-            <a class="navbar-brand" href="#">Health Center</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/developer">Developer</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/blog">Blog</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+          <img class="nav-logo" src="{{ url_for('static', filename='img.png') }}" alt="Logo">
+          Health Center
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/developer">Developer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search symptoms..." aria-label="Search">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+          </form>
         </div>
+      </div>
     </nav>
 
+    <div class="container" style="max-width: 700px;">
 
+      <!-- Hero -->
+      <div class="hero">
+        <div class="badge-pill">🩺 AI-Powered Health Assistant</div>
+        <h1>Health Care Center</h1>
+        <p>Enter your symptoms and get an instant disease prediction with a full personalised health plan.</p>
+      </div>
 
+      <!-- Input card -->
+      <div class="input-card">
+        <form action="/predict" method="post">
+          <label for="symptoms">Select symptoms</label>
+          <input
+            type="text"
+            class="form-control"
+            id="symptoms"
+            name="symptoms"
+            placeholder="e.g. itching, headache, nausea"
+            autocomplete="off"
+            value="{{ symptoms_input if symptoms_input else '' }}"
+          >
 
-<!-- main form of page -->
-<h1 class="mt-4 my-4 text-center text-green">Health Care Center</h1>
-<div class="container my-4 mt-4" style="background: black; color: white; border-radius: 15px; padding: 40px;">
-    <form action="/predict" method="post">
-        <div class="form-group">
-            <label for="symptoms">Select Symptoms:</label>
-            <input type="text" class="form-control", id="symptoms" name="symptoms" placeholder="type systems such as itching, sleeping, aching etc">
+          <button type="button" id="startSpeechRecognition" class="btn-speech">
+            🎙️ Start speech recognition
+          </button>
+          <div class="transcription-box" id="transcription"></div>
 
+          {% if message %}
+          <div class="alert-error-custom">
+            <span>⚠️</span><span>{{ message }}</span>
+          </div>
+          {% endif %}
+
+          {% if warning %}
+          <div class="alert-warning-custom">
+            <span>⚠️</span><span>{{ warning }}</span>
+          </div>
+          {% endif %}
+
+          <button type="submit" class="btn-predict">Predict disease →</button>
+        </form>
+      </div>
+
+      <!-- Results -->
+      {% if predicted_disease %}
+      <div class="results-section">
+        <h2>AI prediction results</h2>
+        <div class="result-grid">
+          <button class="result-btn btn-disease" data-bs-toggle="modal" data-bs-target="#diseaseModal">
+            <span class="btn-icon">🦠</span> Disease
+          </button>
+          <button class="result-btn btn-desc" data-bs-toggle="modal" data-bs-target="#descriptionModal">
+            <span class="btn-icon">📋</span> Description
+          </button>
+          <button class="result-btn btn-precaution" data-bs-toggle="modal" data-bs-target="#precautionModal">
+            <span class="btn-icon">🛡️</span> Precaution
+          </button>
+          <button class="result-btn btn-medications" data-bs-toggle="modal" data-bs-target="#medicationsModal">
+            <span class="btn-icon">💊</span> Medications
+          </button>
+          <button class="result-btn btn-workouts" data-bs-toggle="modal" data-bs-target="#workoutsModal">
+            <span class="btn-icon">🏋️</span> Workouts
+          </button>
+          <button class="result-btn btn-diets" data-bs-toggle="modal" data-bs-target="#dietsModal">
+            <span class="btn-icon">🥗</span> Diets
+          </button>
         </div>
-        <br>
-        <button type="button" id="startSpeechRecognition" class="btn btn-primary" style="margin-left:3px;border:1px solid white; border-radius:20px;">
-            Start Speech Recognition
-        </button>
-        <br>
+      </div>
+      {% endif %}
 
-        <!-- Display the transcribed text here -->
-        <div name="mysysms" id="transcription"></div>
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <span style="flex-shrink:0;">⚠️</span>
+        <span>This tool is for <strong>educational purposes only</strong> and is not a substitute for professional medical advice. Always consult a qualified healthcare provider.</span>
+      </div>
 
-        {% if message %}
-        <p>{{ message }}</p>
-        {% endif %}
-        <br>
-
-        <button type="submit" class="btn btn-danger btn-lg" style="width: 100%; padding: 14px; margin-bottom: 5px;">Predict</button>
-    </form>
-</div>
-
-
-
-
-
-
-
-
-{% if predicted_disease %}
-
-<!-- Results -->
-<h1 class="text-center my-4 mt-4">Our AI System Results</h1>
-<div class="container">
-
-    <div class="result-container">
-        <!-- Buttons to toggle display -->
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#diseaseModal" style="padding:4px;  margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#F39334;color:black;">Disease</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#descriptionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#268AF3 ;color:black;">Description</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#precautionModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#F371F9 ;color:black;">Precaution</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#medicationsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px;border-radius:5px; background:#F8576F ;color:black;">Medications</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#workoutsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#99F741 ;color:black;">Workouts</button>
-        <button class="toggle-button" data-bs-toggle="modal" data-bs-target="#dietsModal" style="padding:4px; margin: 5px 40px 5px 0; font-size:20px;font-weight:bold; width:140px; border-radius:5px; background:#E5E23D;color:black;">Diets</button>
     </div>
-</div>
 
-{% endif %}
-
-<!-- Disease Modal -->
+    <!-- Disease Modal -->
     <div class="modal fade" id="diseaseModal" tabindex="-1" aria-labelledby="diseaseModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;"> <!-- Set header background color inline -->
-                    <h5 class="modal-title" id="diseaseModalLabel">Predicted Disease</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="background-color: #modal-body-color"> <!-- Set modal body background color inline -->
-                    <p>{{ predicted_disease }}</p>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="diseaseModalLabel">🦠 Predicted disease</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="disease-name">{{ predicted_disease }}</p>
+          </div>
         </div>
+      </div>
     </div>
-
 
     <!-- Description Modal -->
     <div class="modal fade" id="descriptionModal" tabindex="-1" aria-labelledby="descriptionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="descriptionModalLabel">Description</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>{{ dis_des }}</p>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="descriptionModalLabel">📋 Description</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>{{ dis_des }}</p>
+          </div>
         </div>
+      </div>
     </div>
 
-<!-- Precaution Modal -->
+    <!-- Precaution Modal -->
     <div class="modal fade" id="precautionModal" tabindex="-1" aria-labelledby="precautionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="precautionModalLabel">Precaution</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in my_precautions %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="precautionModalLabel">🛡️ Precautions</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              {% for i in my_precautions %}
+              <li>{{ i }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
-
-
-
 
     <!-- Medications Modal -->
     <div class="modal fade" id="medicationsModal" tabindex="-1" aria-labelledby="medicationsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="medicationsModalLabel">Medications</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in medications %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="medicationsModalLabel">💊 Medications</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              {% for i in medications %}
+              <li>{{ i }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Workouts Modal -->
     <div class="modal fade" id="workoutsModal" tabindex="-1" aria-labelledby="workoutsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" >
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="workoutsModalLabel">Workouts</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in workout %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="workoutsModalLabel">🏋️ Workouts</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              {% for i in workout %}
+              <li>{{ i }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Diets Modal -->
     <div class="modal fade" id="dietsModal" tabindex="-1" aria-labelledby="dietsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="background-color: #020606; color:white;">
-                    <h5 class="modal-title" id="dietsModalLabel">Diets</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul>
-                        {% for i in my_diet %}
-                            <li>{{ i }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="dietsModalLabel">🥗 Diets</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul>
+              {% for i in my_diet %}
+              <li>{{ i }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
 
+    <script>
+      const btn = document.getElementById('startSpeechRecognition');
+      const transcriptionDiv = document.getElementById('transcription');
+      const symptomsInput = document.getElementById('symptoms');
 
+      btn.addEventListener('click', () => {
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+          transcriptionDiv.textContent = 'Speech recognition not supported in this browser.';
+          return;
+        }
 
-        <script>
-    const startSpeechRecognitionButton = document.getElementById('startSpeechRecognition');
-    const transcriptionDiv = document.getElementById('transcription');
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
 
-    startSpeechRecognitionButton.addEventListener('click', startSpeechRecognition);
+        btn.textContent = '🔴 Listening...';
+        btn.classList.add('listening');
 
-    function startSpeechRecognition() {
-        const recognition = new webkitSpeechRecognition(); // Use webkitSpeechRecognition for compatibility
-
-        recognition.lang = 'en-US'; // Set the language for recognition
-
-        recognition.onresult = function (event) {
-            const result = event.results[0][0].transcript;
-            transcriptionDiv.textContent = result;
+        recognition.onresult = (event) => {
+          const result = event.results[0][0].transcript;
+          transcriptionDiv.textContent = `Heard: "${result}"`;
+          symptomsInput.value = result;
         };
 
-        recognition.onend = function () {
-            console.log('Speech recognition ended.');
+        recognition.onerror = (event) => {
+          transcriptionDiv.textContent = `Error: ${event.error}. Please try again.`;
+        };
+
+        recognition.onend = () => {
+          btn.textContent = '🎙️ Start speech recognition';
+          btn.classList.remove('listening');
         };
 
         recognition.start();
-    }
-</script>
+      });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</body>
-
+  </body>
 </html>
