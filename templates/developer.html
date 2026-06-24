@@ -3,35 +3,303 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Developer — Health Care Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <style>
+      body { background-color: #f8f9fa; }
+
+      .dev-hero {
+        padding: 3rem 0 2rem;
+        border-bottom: 1px solid #e9ecef;
+        margin-bottom: 2.5rem;
+      }
+
+      .badge-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background-color: #e7f1ff;
+        color: #1a56db;
+        font-size: 0.75rem;
+        font-weight: 500;
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 1rem;
+      }
+
+      .profile-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 2rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+        margin-bottom: 2rem;
+      }
+
+      .avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background-color: #e7f1ff;
+        color: #1a56db;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .profile-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #212529;
+        margin: 0 0 4px;
+      }
+
+      .profile-role {
+        font-size: 0.875rem;
+        color: #6c757d;
+        margin: 0 0 12px;
+      }
+
+      .profile-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .profile-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: #212529;
+        transition: background 0.15s;
+      }
+
+      .profile-link:hover { background: #e7f1ff; color: #1a56db; }
+
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin-bottom: 2rem;
+      }
+
+      .skill-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 10px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .skill-card .skill-icon { font-size: 1.4rem; margin-bottom: 6px; }
+
+      .skill-card h6 {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #212529;
+        margin: 0 0 3px;
+      }
+
+      .skill-card p {
+        font-size: 0.72rem;
+        color: #6c757d;
+        margin: 0;
+      }
+
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #adb5bd;
+        margin-bottom: 1rem;
+      }
+
+      .info-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .info-card h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #212529;
+        margin-bottom: 0.5rem;
+      }
+
+      .info-card p {
+        font-size: 0.875rem;
+        color: #495057;
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      .project-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        padding: 1.25rem;
+        height: 100%;
+      }
+
+      .project-tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 3px 10px;
+        border-radius: 20px;
+        background-color: #e7f1ff;
+        color: #1a56db;
+        margin-bottom: 0.75rem;
+      }
+
+      .project-card h6 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #212529;
+        margin-bottom: 0.4rem;
+      }
+
+      .project-card p {
+        font-size: 0.8rem;
+        color: #6c757d;
+        line-height: 1.6;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
 
-  <div class="container my-4 mt-4">
-<h6>    About Junaid Khan: Your AI & ML Engineer
-</h6>
-<h5>Meet the Developer</h5>
+    <div class="container my-4" style="max-width: 800px;">
 
-<p>Hello, I'm Junaid Khan, your AI and Machine Learning Engineer with over 5 years of experience in the field. I am passionate about harnessing the power of technology to make a positive impact on people's lives. Allow me to share a bit about my journey in the world of artificial intelligence and machine learning.
-</p>
-<h5>My Expertise
-</h5>
-<p>With a strong academic background in computer science and a deep fascination for AI and ML, I embarked on a journey that has taken me across the globe, working on diverse and innovative projects. Over the years, I've had the privilege of collaborating on international projects that have pushed the boundaries of what's possible in AI and ML.
-</p>
-<h5>A Commitment to Excellence
-</h5>
-<p>My work is driven by a commitment to excellence and a belief that technology should be accessible and beneficial to everyone. Whether it's developing predictive models, creating intelligent algorithms, or designing user-friendly interfaces, I strive for solutions that are both cutting-edge and user-centric.
-</p>
-<h5>Passion for Health Tech
-</h5>
-<p>The development of [Your Website Name] represents a convergence of my passion for AI and my dedication to improving healthcare accessibility. I believe that AI has the potential to transform the way we approach healthcare, making it more personalized and informative. This platform is a testament to that vision.
-</p>
-<h5>Join Me on this Journey
-</h5>
-<p>I invite you to explore [Your Website Name] and experience firsthand the fusion of AI and healthcare. Together, we can empower individuals with knowledge, promote well-being, and contribute to a brighter and healthier future.
-</p>
-  </div>
+      <!-- Hero -->
+      <div class="dev-hero">
+        <div class="badge-pill">👨‍💻 Developer Profile</div>
+        <h1 class="fw-semibold mb-2" style="font-size: 2rem;">Meet the developer</h1>
+        <p class="text-secondary mb-0">The person who designed, built, and deployed this project from scratch.</p>
+      </div>
+
+      <!-- Profile card -->
+      <div class="profile-card">
+        <div class="avatar">HK</div>
+        <div>
+          <p class="profile-name">Hitesh Kumar</p>
+          <p class="profile-role">BTech CSE Student · VIT Bhopal University · ML & Cloud Enthusiast</p>
+          <div class="profile-links">
+            <a href="mailto:kumhit871@gmail.com" class="profile-link">
+              📧 kumhit871@gmail.com
+            </a>
+            <a href="https://github.com/HiteshKumar360" target="_blank" class="profile-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              HiteshKumar360
+            </a>
+            <a href="https://www.linkedin.com/in/hitesh-kumar-12ba3228a/" target="_blank" class="profile-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              Hitesh Kumar
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- About -->
+      <div class="section-label">About</div>
+      <div class="info-card">
+        <h5>Who I am</h5>
+        <p>
+          I'm Hitesh Kumar, a BTech Computer Science student at VIT Bhopal University with a
+          strong interest in machine learning, data science, and cloud technologies. I built
+          this project to explore the intersection of AI and healthcare — applying ML concepts
+          I've studied to a real-world problem that genuinely matters.
+        </p>
+      </div>
+
+      <!-- Skills -->
+      <div class="section-label">Skills</div>
+      <div class="skill-grid mb-4">
+        <div class="skill-card">
+          <div class="skill-icon">🐍</div>
+          <h6>Python</h6>
+          <p>Flask, Pandas, NumPy, Scikit-learn</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🤖</div>
+          <h6>Machine Learning</h6>
+          <p>SVM, classification, model evaluation</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">☁️</div>
+          <h6>Cloud</h6>
+          <p>AWS Certified Cloud Practitioner</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">☕</div>
+          <h6>Java</h6>
+          <p>OOP, Swing, MySQL, JFreeChart</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🌐</div>
+          <h6>Web</h6>
+          <p>HTML, CSS, Bootstrap, Jinja2</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon">🗄️</div>
+          <h6>Data</h6>
+          <p>MySQL, CSV processing, EDA</p>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="section-label">Other projects</div>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <div class="project-card">
+            <span class="project-tag">Java · MySQL</span>
+            <h6>Smart Inventory System</h6>
+            <p>A desktop application built with Java Swing, MySQL, and JFreeChart for real-time inventory tracking and visual reporting.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="project-card">
+            <span class="project-tag">Python · ML · Streamlit</span>
+            <h6>Customer Churn Prediction</h6>
+            <p>End-to-end data science project on the Telco dataset with K-Means segmentation, MLflow tracking, and a live Streamlit dashboard.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- This project -->
+      <div class="section-label">This project</div>
+      <div class="info-card">
+        <h5>Medicine Recommendation System</h5>
+        <p>
+          Built entirely from scratch — dataset preparation, SVM model training, Flask backend,
+          Jinja2 templates, and deployment. The app predicts diseases from 132 symptoms across
+          41 conditions and returns a full health plan including medications, diet, precautions,
+          and workouts. View the source on
+          <a href="https://github.com/HiteshKumar360/Medicine-Recommendation-System" target="_blank"
+             style="color: #1a56db; text-decoration: none; font-weight: 500;">GitHub →</a>
+        </p>
+      </div>
+
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
